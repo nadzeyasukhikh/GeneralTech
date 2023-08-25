@@ -16,11 +16,12 @@ LIMIT 1;
 Вывести названия трех товаров, которые продаются хуже всего
 
 SELECT Products.ProductName,
-SUM(OrderDetails.Quantity) 
+SUM(OrderDetails.Quantity) AS TotalSales
 FROM Products 
 LEFT JOIN OrderDetails ON Products.ProductID = OrderDetails.ProductID
 GROUP BY Products.ProductName
-ORDER BY OrderDetails.Quantity ASC
+ORDER BY TotalSales ASC
+LIMIT 3;
 
 Вывести название одного перевозчика, у которого меньше всего заказов
 
